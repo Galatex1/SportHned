@@ -5,13 +5,15 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 require '../includes/DbOperations.php';
 
-
-
 $app = new \Slim\App([
     'settings'=>[
-        'displayErrorDetails'=>true
+        'displayErrorDetails'=>true,
     ]
 ]);
+
+ //$route = $app->getContainer()->get('request')->getUri()->getPath();
+
+ //var_dump($route);
 
 $DB = DbOperations::getDB(); 
 
@@ -34,8 +36,21 @@ function haveEmptyParameters($required_params, $request, $response){
     return $error; 
 }
 
-$app->group('/user', function () use ($app, $DB) {
-    require '../src/routes/user.php';
+
+
+$app->group('/api', function () use ($app, $DB) {
+
+    $app->get('/', function(Request $request, Response $response) use ($DB){
+        $file =  __DIR__ . "/UI/userInterface.php";
+        $response->write(file_get_contents($file));
+        return $response->withHeader('Content-type', 'text/html')
+                        ->withStatus(201);
+    });
+        
+    $app->group('/user', function () use ($app, $DB) {
+        require __DIR__ . '/../src/routes/user.php';
+    });
+
 });
 
 

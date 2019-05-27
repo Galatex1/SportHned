@@ -12,7 +12,7 @@
         //inside constructor
         //we are getting the connection link
         function __construct(){
-            require_once dirname(__FILE__) . '/DbConnect.php';
+            require_once __DIR__ . '/DbConnect.php';
             $db = new DbConnect; 
             $this->con = $db->connect();
             $this->users = new Users($this->con); 

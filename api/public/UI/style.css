@@ -1,0 +1,74 @@
+input
+{
+        font-family: 'Open Sans', sans-serif;
+        font-size:16px;
+        padding: 9px;
+        outline: 0;
+        border:0;
+        background: #FCF8F5;
+        border-radius:5px;
+}
+
+input[type=submit]
+{
+        /* width:auto; */
+        padding: 9px 21px;
+        line-height:25px;
+        text-shadow:none;
+        cursor:pointer;
+        box-shadow: none;
+        background: #333333;
+        color: #fff;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #FCF8F5 inset;
+}
+
+#reg_form {
+    text-align: center;
+}
+
+#loginForm{
+    margin:auto;
+    text-align:center;
+}
+
+table {
+    margin: auto;
+}
+
+
+.wrap{
+    display:grid;
+    /* height: 100%; */
+    width: 100%;
+    grid-template-columns: minmax(5%, 30%) 15% minmax(20%, 80%) 15% minmax(5%, 30%);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: 
+    ". . input validation ."
+    ". . input validation ."
+    ". . input validation ."
+    ". . input validation ."
+    ". . input validation ."
+    ". . submit . .";
+    grid-row-gap: 3px;
+    
+}
+
+.log_field{
+    grid-area: input;
+    grid-row: auto;
+}
+
+.validation{
+    grid-area: validation;
+    grid-row: auto;
+    align-content: center;
+    align-items: center;
+}
+
+#reg_button{
+    grid-area: submit;
+    display:inline-block;
+}
